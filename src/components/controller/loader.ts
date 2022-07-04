@@ -7,18 +7,16 @@ type resAnswer = {
 type option = {sources: string}
 
 class Loader {
-    baseLink: string;
-    options: {apiKey: string};
-    constructor(baseLink: string, options: { apiKey: string; }) {
+    constructor(public baseLink: string, public options: {apiKey: string}) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
     getResp(
-        { endpoint, options },
-        callback = () => {
+        { endpoint, options }: {endpoint: string, options?: {sources: string} },
+        callback = ([]) =>  {
             console.error('No callback for GET response');
-        }
+        } 
     ) {
         this.load('GET', endpoint, callback, options);
     }
@@ -44,7 +42,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method:string, endpoint:string, callback, options: option) {
+    load(method:string, endpoint:string, callback: ({}) => {} | void, options: option) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
