@@ -12,6 +12,7 @@
     "allowJs": true,
     "outDir": "./dist",
     "noUnusedLocals": true,
+    "noImplicitAny": true
   },
   "include": [
     "src/**/*"

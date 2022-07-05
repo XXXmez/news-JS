@@ -1,32 +1,19 @@
 import AppController from '../controller/controller';
-import { AppView } from '../view/appView';
+import { AppView, news, sources } from '../view/appView';
 
 class App {
-    view: {
-        drawSources(data: {status: string, sources: [{}]}):void;
-        drawNews(data: { articles: [{}]; status: string; totalResults: number; }):void;
-        news: {}; 
-        sources: {};
-    };
-    controller: {
-        getNews(PointerEvent:Event, {}):void;
-        getSources({}):void;
-    };
+    controller: AppController;
+    view: AppView;
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();
     }
 
-    start():void {
+    start() {
         document
-            .querySelector('.sources')
-            .addEventListener('click', (e) => this.controller.getNews(
-                e, (data: {articles: [{}], status: string, totalResults: number}) => {
-                    this.view.drawNews(data);
-                }
-                
-            ));
-        this.controller.getSources((data: {status: string, sources: [{}]}) => {this.view.drawSources(data)});
+            .querySelector('.sources')!
+            .addEventListener('click', (e: Event) => this.controller.getNews(e, (data: news) => {this.view.drawNews(data)}));
+        this.controller.getSources((data: sources) => {this.view.drawSources(data)});
     }
 }
 
