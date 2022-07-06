@@ -25,7 +25,8 @@ export class News {
 
         news.forEach((item:itemElem, idx:number) => {
             const newsClone = newsItemTemp.content.cloneNode(true) as DocumentFragment;
-
+            console.log(news);
+            
             if (idx % 2) newsClone.querySelector('.news__item')?.classList.add('alt');
 
             newsClone.querySelector<HTMLDivElement>('.news__meta-photo')!.style.backgroundImage = `url(${
