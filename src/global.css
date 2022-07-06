@@ -93,6 +93,15 @@ footer a:hover {
 }
 
 @media (max-width:760px) {
+    body {
+        align-items: flex-start;
+    }
+    body.active {
+        overflow: hidden;
+    }
+    header {
+        width: 75%;
+    }
     .footer {
         flex-direction: column;
         align-items: center;
@@ -100,17 +109,54 @@ footer a:hover {
     .footer__logo {
         height: 50px;
     }
-    /* .burger {
+    .burger {
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        right: 30px;
+        top: 40px;
+        background-color: #3c3f48;
+        transition: .3s;
+    }
+    .burger:hover {
+        cursor: pointer;
+        background-color: #566285;
+    }
+    .burger.active > span:nth-child(1) {
+        transform: rotate(45deg) translate(7px, 8px);
+    }
+    .burger.active > span:nth-child(2) {
+        opacity: 0;
+    }
+    .burger.active > span:nth-child(3) {
+        transform: rotate(135deg) translate(-6px, 6px);
+    }
+    .burger > span {
+        width: 40px;
+        height: 5px;
         display: block;
+        background: lightgrey;
+        transition: .3s;
     }
     .sources {
+        scrollbar-width: auto;
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
+        width: 0;
         height: 100%;
         flex-wrap: wrap;
-        padding: 100px 30px 50px;
         justify-content: space-between;
-    } */
+        transition: .3s;
+    }
+    .sources.active {
+        width: 100%;
+        padding: 100px 30px 50px;
+    }
 }

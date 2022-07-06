@@ -17,6 +17,14 @@ const baseConfig = {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
             },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: '/img/'
+                },
+            },
         ],
     },
     resolve: {

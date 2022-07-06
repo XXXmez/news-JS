@@ -13,8 +13,6 @@ class Loader {
     constructor(public baseLink: baseLink, public options: options) {
         this.baseLink = baseLink;
         this.options = options;
-        console.log(this.baseLink, this.options);
-        
     }
 
     getResp<T>(
